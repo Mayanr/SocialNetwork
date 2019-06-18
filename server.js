@@ -5,7 +5,7 @@ var path = require('path');
 
 const app = express();
 //connect Database
-mongoose.connect('mongodb://localhost/soc_network', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/soc_network', { useNewUrlParser: true, useCreateIndex: true } );
 require('./config/mongoose.js');
 
 //init Middleware
