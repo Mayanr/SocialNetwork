@@ -16,7 +16,7 @@ router.get('/',(req, res) => {
     })
 });
 
-//@route    GET api/users
+//@route    POST api/users
 //@desc     Register user
 //@access   Public
 router.post('/', [
