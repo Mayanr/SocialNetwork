@@ -1,4 +1,10 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from "../actions/types";
+import { 
+    GET_PROFILE, 
+    PROFILE_ERROR, 
+    CLEAR_PROFILE, 
+    GET_PROFILES, 
+    GET_REPOS 
+} from "../actions/types";
 
 const intialState = {
     //holds all the user profile data. Also, if we visit another user's profile, it'll be stored in here...both sets of individual data will be put in here.
@@ -23,6 +29,12 @@ export default function(state = intialState, action){
                 profile: payload,
                 loading: false
             }
+        case GET_PROFILES:
+            return {
+               ...state,
+               profiles: payload,
+               loading: false 
+            }
         case PROFILE_ERROR:
             return {
                 ...state,
@@ -36,6 +48,12 @@ export default function(state = intialState, action){
                 repos: [],
                 loading: false
             };
+        case GET_REPOS:
+            return {
+                ...state,
+                repos: payload,
+                loading: false
+            }
         default:
             return state;
     }

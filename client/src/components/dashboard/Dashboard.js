@@ -8,7 +8,7 @@ import { getCurrentProfile } from "../../actions/profile";
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading} }) =>{
     useEffect(() => {
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
     //if the profile is still loading and is null, then show the spinner...else <Fragment>
     return loading && profile === null ? (
     <Spinner /> 
@@ -44,7 +44,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
     );
 };
 
-Dashboard.prototype = {
+Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
