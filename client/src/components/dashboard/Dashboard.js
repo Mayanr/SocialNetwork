@@ -5,9 +5,7 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
-import ProfileTop from "../profile/ProfileTop";
-import ProfileAbout from "../profile/ProfileAbout";
-import ProfileGithub from "../profile/ProfileGithub";
+
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading} }) =>{
     useEffect(() => {
@@ -22,9 +20,14 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
+      
       {profile !== null ? (
         <Fragment>
         {/* has an account */}
+          <p className="text-primary">
+          Click below to edit your profile details or connect with other developers in the community!
+        </p>
+        <br/>
           <DashboardActions />
           {/*<Experience experience={profile.experience} />
           <Education education={profile.education} />
@@ -34,13 +37,6 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
             </button>
           </div> 
             */}
-        <div className='profile-grid my-1'>
-            <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
-            {profile.githubusername && (
-              <ProfileGithub username={profile.githubusername} />
-            )} 
-          </div>
         </Fragment>
       ) : (
         <Fragment>
