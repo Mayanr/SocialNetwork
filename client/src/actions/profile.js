@@ -7,7 +7,6 @@ import {
     PROFILE_ERROR,
     CLEAR_PROFILE,
     GET_REPOS
-
 } from "./types";
 
 //Get current users profile
@@ -46,7 +45,7 @@ export const getProfiles = () => async dispatch => {
 };
 
 //Get Profile by ID
-export const getProfileBuyId = userId => async dispatch => {
+export const getProfileById = userId => async dispatch => {
     try {
         const res = await axios.get(`/api/profile/user/${userId}`);
 
@@ -63,7 +62,11 @@ export const getProfileBuyId = userId => async dispatch => {
 };
 
 //create or update a profile
-export const createProfile = (formData, history, edit = false) => async dispatch => {
+export const createProfile = (
+    formData, 
+    history, 
+    edit = false
+) => async dispatch => {
     try {
         const config = {
             headers: {
@@ -77,7 +80,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
             payload: res.data
         });
         //if edit is true, then say 'profile updated', else say "Profile Created"
-        dispatch(setAlert(edit ? "profile Updated": 'Profile Created', "success"));
+        dispatch(setAlert(edit ? "Profile Updated": 'Profile Created', "success"));
 
         if(!edit) {
             history.push("/dashboard");
@@ -95,19 +98,19 @@ export const createProfile = (formData, history, edit = false) => async dispatch
     }
 };
 
-//Get Github repos
+// Get Github repos
 export const getGithubRepos = username => async dispatch => {
     try {
-        const res = await axios.get(`/api/profile/github/${username}`);
-
-        dispatch({
-            type: GET_REPOS,
-            payload: res.data
-        });
+      const res = await axios.get(`/api/profile/github/${username}`);
+  
+      dispatch({
+        type: GET_REPOS,
+        payload: res.data
+      });
     } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
     }
-};
+  };
