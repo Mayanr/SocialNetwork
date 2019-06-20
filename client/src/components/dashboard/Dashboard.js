@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect} from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner"
 import { getCurrentProfile } from "../../actions/profile";
@@ -23,20 +24,20 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
           {/* <DashboardActions />
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
-
           <div className='my-2'>
             <button className='btn btn-danger' onClick={() => deleteAccount()}>
               <i className='fas fa-user-minus' /> Delete My Account
             </button>
-          </div> */}
+          </div> 
+            */}
         </Fragment>
       ) : (
         <Fragment>
         {/* doesn't have an account */}
-          {/* <p>You have not yet setup a profile, please add some info</p>
-          <Link to='/create-profile' className='btn btn-primary my-1'>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to='/create-profile' className='btn btn-primary my-1'>
             Create Profile
-          </Link> */}
+            </Link> 
         </Fragment>
       )}
     </Fragment>
