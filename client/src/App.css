@@ -575,3 +575,9 @@ button {
     padding: 0.3rem 0.4rem;
   }
 }
+
+/* Footer styling */
+.footer {
+  color: black;
+  text-align: center;
+}
